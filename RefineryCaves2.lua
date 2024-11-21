@@ -43,7 +43,7 @@ Section:NewSlider("JumpPower", "SliderInfo", 500, 50, function(s) -- 500 (Мак
 end)
 
 -- Секция
-local Tab = Window:NewTab("Weather")
+local Tab = Window:NewTab("Vehicle")
 
 -- Подсекция
 local Section = Tab:NewSection("Teleport on Vehicle")
@@ -109,6 +109,16 @@ Section:NewButton("g", "Teleport too Claudnite", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7207,757,-2968) 
 end)
 
+-- Секция
+local Tab = Window:NewTab("Boat")
+
+-- Подсекция
+local Section = Tab:NewSection("Teleport on Boat")
+
+-- Кнопка
+Section:NewButton("EMERALD", "Teleport too Emeralde", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7745,20,-3337) 
+end)
 
 
 
