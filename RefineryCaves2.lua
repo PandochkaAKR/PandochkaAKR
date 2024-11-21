@@ -53,9 +53,8 @@ Section:NewButton("Caves", "ButtonInfo", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(871,20,1789) 
 end)
 
--- Кнопка
-Section:NewButton("d", "ButtonInfo", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(871,20,1789) 
+Section:NewButton("terain 1", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1611,35,717) 
 end)
 
 -- Кнопка
