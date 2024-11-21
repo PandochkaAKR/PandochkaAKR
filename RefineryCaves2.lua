@@ -60,39 +60,51 @@ local Tab = Window:NewTab("Teleports")
 local Section = Tab:NewSection("Teleport Player")
 
 -- Кнопка
-Section:NewButton("Caves", "ButtonInfo", function()
+Section:NewButton("Caves", "Teleport too Caves", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(871,5,1789) 
 end)
 
 -- Кнопка
-Section:NewButton("UCShop", "ButtonInfo", function()
+Section:NewButton("UCShop", "Teleport too UCShop", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1906,5,-214) 
 end)
 
 -- Кнопка
-Section:NewButton("NAUCIS FIND", "ButtonInfo", function()
+Section:NewButton("NAUCIS FIND", "Teleport too NAUCIS FIND", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2095,5,-672) 
 end)
 
 -- Кнопка
-Section:NewButton("FURNITURE", "ButtonInfo", function()
+Section:NewButton("FURNITURE", "Teleport too FURNITURE", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-591,78,276) 
 end)
 
 -- Кнопка
-Section:NewButton("ROSEWELL MINES", "ButtonInfo", function()
+Section:NewButton("ROSEWELL MINES", "Teleport too ROSEWELL MINES", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5541,14,-1686) 
 end)
 
 -- Кнопка
-Section:NewButton("VI'S LOGICS", "ButtonInfo", function()
+Section:NewButton("VI'S LOGICS", "Teleport too VI'S LOGICS", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5129,61,-2815) 
 end)
 
 -- Кнопка
-Section:NewButton("Claudnite", "ButtonInfo", function()
+Section:NewButton("Claudnite", "Teleport too Claudnite", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7207,757,-2968) 
 end)
+
+-- Кнопка
+Section:NewButton("Claudnite", "Teleport too Claudnite", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7207,757,-2968) 
+end)
+
+
+
+
+
+
+
 
 
 
