@@ -95,13 +95,19 @@ Section:NewButton("Claudnite", "Teleport too Claudnite", function()
 end)
 
 -- Кнопка
-Section:NewButton("Claudnite", "Teleport too Claudnite", function()
+Section:NewButton("CRAIG'S DEALERSHIP", "Teleport too Claudnite", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6843,6,-4243) 
+end)
+
+-- Кнопка
+Section:NewButton("f", "Teleport too Claudnite", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7207,757,-2968) 
 end)
 
-
-
-
+-- Кнопка
+Section:NewButton("g", "Teleport too Claudnite", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7207,757,-2968) 
+end)
 
 
 
