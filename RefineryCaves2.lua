@@ -119,8 +119,8 @@ Section:NewButton("EMERALD", "Teleport too Claudnite", function()
 end)
 
 -- Кнопка
-Section:NewButton("g", "Teleport too Claudnite", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7207,757,-2968) 
+Section:NewButton("Enchants", "Teleport too Claudnite", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3031,-587,-1548) 
 end)
 
 -- Секция
