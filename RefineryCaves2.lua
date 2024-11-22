@@ -2,7 +2,7 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
 
 -- Создать окно UI
-local Window = Library.CreateLib("Refinery Caves 2", "RJTheme3")
+local Window = Library.CreateLib("Refinery Caves 2 By PandochkaAKR          V1.0", "RJTheme3")
 
 -- Секция
 local Tab = Window:NewTab("Player")
