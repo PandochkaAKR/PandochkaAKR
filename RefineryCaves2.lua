@@ -136,6 +136,12 @@ Section:NewButton("причал", "Teleport too Emeralde", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2152,10,-883) 
 end)
 
+-- Кнопка
+Section:NewButton("SEllARY", "Teleport too Emeralde", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1441,5,168) 
+end)
+
+
 
 
 -- Секция
