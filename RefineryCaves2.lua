@@ -2,7 +2,10 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
 
 -- Создать окно UI
-local Window = Library.CreateLib("Refinery Caves 2 By PandochkaAKR,"RJTheme3")
+local Window = Library.CreateLib("Refinery Caves 2 By PandochkaAKR","RJTheme3")
+
+
+
 
 -- Секция
 local Tab = Window:NewTab("Player")
@@ -146,10 +149,6 @@ Section:NewButton("shop", "Teleport too Emeralde", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2242,-485,18) 
 end)
 
-
-
-local Window = Library.CreateLib("Refinery Caves 2 By PandochkaAKR, "RJTheme3")
-        
 -- Секция
 local Tab = Window:NewTab("Settings")
 
