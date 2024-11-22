@@ -2,7 +2,7 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
 
 -- Создать окно UI
-local Window = Library.CreateLib("Refinery Caves 2 By PandochkaAKR                           V1.0", "RJTheme3")
+local Window = Library.CreateLib("Refinery Caves 2 By PandochkaAKR,"RJTheme3")
 
 -- Секция
 local Tab = Window:NewTab("Player")
@@ -38,10 +38,6 @@ Section:NewDropdown("DropdownText", "DropdownInf", {"Option 1", "Option 2", "Opt
     print(currentOption)
 end)
 
-Section:NewSlider("JumpPower", "SliderInfo", 500, 50, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
-end)
-
 -- Секция
 local Tab = Window:NewTab("Vehicle")
 
@@ -57,18 +53,22 @@ Section:NewButton("terain 1", "ButtonInfo", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1611,35,717) 
 end)
 
-
 -- Кнопка
 Section:NewButton("Caves Shards", "ButtonInfo", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6623,-571,854) 
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6623,-571,854)
 end)
-
 
 -- Секция
 local Tab = Window:NewTab("Teleports")
 
 -- Подсекция
 local Section = Tab:NewSection("Teleport Player")
+
+
+-- Кнопка
+Section:NewButton("shop", "Teleport too Emeralde", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2242,-485,18) 
+end)
 
 -- Кнопка
 Section:NewButton("Caves", "Teleport too Caves", function()
@@ -148,7 +148,8 @@ end)
 
 
 
-
+local Window = Library.CreateLib("Refinery Caves 2 By PandochkaAKR, "RJTheme3")
+        
 -- Секция
 local Tab = Window:NewTab("Settings")
 
