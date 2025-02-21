@@ -1,4 +1,4 @@
-w-- Ссылка на Библиотеку
+-- Ссылка на Библиотеку
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
 
 -- Создать окно UI
@@ -29,8 +29,59 @@ Section:NewSlider("WalkSpeed", "SliderInfo", 500, 20, function(s) -- 500 (Мак
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
 end)
 
-Section:NewSlider("JumpPower", "SliderInfo", 500, 50, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+Section:NewSlider("JumpPower", "SliderInfo", 500, 50, function(j) -- 500 (Макс. значение) | 0 (Мин. значение)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = j
+end)
+
+Section:NewToggle("Character Light", "Toggle Light", function(state)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    if character and character:FindFirstChild("HumanoidRootPart") then
+        local existingLight = character.HumanoidRootPart:FindFirstChild("CharacterLight")
+        
+        if state then
+            if not existingLight then
+                -- Создаём новую точку света
+                local light = Instance.new("PointLight")
+                light.Name = "CharacterLight"
+                light.Parent = character.HumanoidRootPart
+                light.Range = 99999999  -- Дальность света
+                light.Brightness = 2  -- Яркость
+                light.Color = Color3.fromRGB(255, 255, 200)  -- Цвет тёплого света
+                print("Light On")
+            end
+        else
+            if existingLight then
+                existingLight:Destroy()
+                print("Light Off")
+            end
+        end
+    end
+end)
+
+Section:NewToggle("Clock", "Clock off\on", function(state)
+    if state then
+        game.Players.LocalPlayer.Values._ClockPass.Value = true
+    else
+        game.Players.LocalPlayer.Values._ClockPass.Value = false
+    end
+end)
+
+Section:NewToggle("2X XP", "2X XP off\on", function(state)
+    if state then
+        game.Players.LocalPlayer.Values._MoreMastery.Value = true
+    else
+        game.Players.LocalPlayer.Values._MoreMastery.Value = false
+    end
+end)
+
+Section:NewToggle("CheaperFilling", "CheaperFilling off\on", function(state)
+    if state then
+        game.Players.LocalPlayer.Values._CheaperFilling.Value = true
+    else
+        game.Players.LocalPlayer.Values._CheaperFilling.Value = false
+    end
 end)
 
 -- Дропдаун
@@ -148,6 +199,3 @@ end)
 
 -- Секция
 local Tab = Window:NewTab("Settings")
-
--- Подсекция
-local Section = Tab:NewSection("Coming soon")
