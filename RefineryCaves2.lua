@@ -1,41 +1,73 @@
--- Ссылка на Библиотеку
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
 local player = game.Players.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait()
 local humanoidRootPart = char:WaitForChild("HumanoidRootPart")
+local humanoid = char:WaitForChild("Humanoid")
 
 local flying = false
 local speed = 50
+local bodyVelocity
+local bodyGyro
 
 local function setFlying(state)
     if state then
-        -- Включение полёта
         if flying then return end
         flying = true
 
-        local bv = Instance.new("BodyVelocity")
-        bv.Velocity = Vector3.new(0, 0, 0)
-        bv.MaxForce = Vector3.new(4000, 4000, 4000)
-        bv.Name = "FlightVelocity"
-        bv.Parent = humanoidRootPart
+        -- Убираем гравитацию
+        humanoid.PlatformStand = true
 
-        local bg = Instance.new("BodyGyro")
-        bg.CFrame = humanoidRootPart.CFrame
-        bg.MaxTorque = Vector3.new(4000, 4000, 4000)
-        bg.Name = "FlightGyro"
-        bg.Parent = humanoidRootPart
+        -- Создаём силу для полёта
+        bodyVelocity = Instance.new("BodyVelocity")
+        bodyVelocity.Velocity = Vector3.new(0, 0, 0)
+        bodyVelocity.MaxForce = Vector3.new(4000, 4000, 4000)
+        bodyVelocity.Parent = humanoidRootPart
+
+        bodyGyro = Instance.new("BodyGyro")
+        bodyGyro.CFrame = humanoidRootPart.CFrame
+        bodyGyro.MaxTorque = Vector3.new(4000, 4000, 4000)
+        bodyGyro.Parent = humanoidRootPart
+
+        -- Управление полётом
+        local userInput = game:GetService("UserInputService")
+        local runService = game:GetService("RunService")
+
+        local function flyStep()
+            if not flying then return end
+            local direction = Vector3.new(0, 0, 0)
+            
+            if userInput:IsKeyDown(Enum.KeyCode.W) then
+                direction = direction + (humanoidRootPart.CFrame.LookVector * speed)
+            end
+            if userInput:IsKeyDown(Enum.KeyCode.S) then
+                direction = direction - (humanoidRootPart.CFrame.LookVector * speed)
+            end
+            if userInput:IsKeyDown(Enum.KeyCode.A) then
+                direction = direction - (humanoidRootPart.CFrame.RightVector * speed)
+            end
+            if userInput:IsKeyDown(Enum.KeyCode.D) then
+                direction = direction + (humanoidRootPart.CFrame.RightVector * speed)
+            end
+            if userInput:IsKeyDown(Enum.KeyCode.Space) then
+                direction = direction + Vector3.new(0, speed, 0)
+            end
+            if userInput:IsKeyDown(Enum.KeyCode.LeftControl) then
+                direction = direction - Vector3.new(0, speed, 0)
+            end
+
+            bodyVelocity.Velocity = direction
+        end
+
+        runService.RenderStepped:Connect(flyStep)
     else
-        -- Выключение полёта
+        -- Выключаем полёт
         flying = false
-        if humanoidRootPart:FindFirstChild("FlightVelocity") then
-            humanoidRootPart.FlightVelocity:Destroy()
-        end
-        if humanoidRootPart:FindFirstChild("FlightGyro") then
-            humanoidRootPart.FlightGyro:Destroy()
-        end
+        humanoid.PlatformStand = false
+        if bodyVelocity then bodyVelocity:Destroy() end
+        if bodyGyro then bodyGyro:Destroy() end
         humanoidRootPart.Velocity = Vector3.zero
     end
 end
+
 -- Создать окно UI
 local Window = Library.CreateLib("Refinery Caves 2 By PandochkaAKR","RJTheme3")
 
