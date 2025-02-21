@@ -1,6 +1,41 @@
 -- Ссылка на Библиотеку
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = char:WaitForChild("HumanoidRootPart")
 
+local flying = false
+local speed = 50
+
+local function setFlying(state)
+    if state then
+        -- Включение полёта
+        if flying then return end
+        flying = true
+
+        local bv = Instance.new("BodyVelocity")
+        bv.Velocity = Vector3.new(0, 0, 0)
+        bv.MaxForce = Vector3.new(4000, 4000, 4000)
+        bv.Name = "FlightVelocity"
+        bv.Parent = humanoidRootPart
+
+        local bg = Instance.new("BodyGyro")
+        bg.CFrame = humanoidRootPart.CFrame
+        bg.MaxTorque = Vector3.new(4000, 4000, 4000)
+        bg.Name = "FlightGyro"
+        bg.Parent = humanoidRootPart
+    else
+        -- Выключение полёта
+        flying = false
+        if humanoidRootPart:FindFirstChild("FlightVelocity") then
+            humanoidRootPart.FlightVelocity:Destroy()
+        end
+        if humanoidRootPart:FindFirstChild("FlightGyro") then
+            humanoidRootPart.FlightGyro:Destroy()
+        end
+        humanoidRootPart.Velocity = Vector3.zero
+    end
+end
 -- Создать окно UI
 local Window = Library.CreateLib("Refinery Caves 2 By PandochkaAKR","RJTheme3")
 
@@ -57,6 +92,15 @@ Section:NewToggle("Character Light", "Toggle Light", function(state)
                 print("Light Off")
             end
         end
+    end
+end)
+
+Section:NewToggle("Fly", "on/off fly", function(state)
+    setFlying(state) -- Активирует или отключает полёт
+    if state then
+        print("Полёт включен")
+    else
+        print("Полёт выключен")
     end
 end)
 
