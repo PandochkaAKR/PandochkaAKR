@@ -151,28 +151,15 @@ end)
 local Tab = Window:NewTab("Teleports")
 
 -- Подсекция
-local Section = Tab:NewSection("Teleport Player")
+local Section = Tab:NewSection("Teleports")
 
 -- Кнопки телепортации
 Section:NewButton("shop", "Teleport too Emeralde", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2242,-485,18) 
 end)
 
-Section:NewButton("Caves", "Teleport too Caves", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(871,5,1789) 
-end)
-
 Section:NewButton("UCShop", "Teleport too UCShop", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1906,5,-214) 
-end)
-
--- Кнопки телепортации
-Section:NewButton("Caves", "ButtonInfo", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(871,20,1789) 
-end)
-
-Section:NewButton("terain 1", "ButtonInfo", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1611,35,717) 
 end)
 
 Section:NewButton("Caves Shards", "ButtonInfo", function()
@@ -192,8 +179,8 @@ Section:NewButton("SEllARY", "Teleport too Emeralde", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1441,5,168) 
 end)
 
-Section:NewButton("shop", "Teleport too Emeralde", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2242,-485,18) 
+Section:NewButton("ENCHANTED", "Teleport too ENCHANTED", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3167,-580,-1626) 
 end)
 
 -- Секция
