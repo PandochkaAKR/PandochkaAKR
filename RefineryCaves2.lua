@@ -183,5 +183,57 @@ Section:NewButton("ENCHANTED", "Teleport too ENCHANTED", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3167,-580,-1626) 
 end)
 
+-- Кнопка
+Section:NewButton("shop", "Teleport too Emeralde", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2242,-485,18) 
+end)
+
+-- Кнопка
+Section:NewButton("Caves", "Teleport too Caves", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(871,5,1789) 
+end)
+
+-- Кнопка
+Section:NewButton("UCShop", "Teleport too UCShop", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1906,5,-214) 
+end)
+
+-- Кнопка
+Section:NewButton("NAUCIS FIND", "Teleport too NAUCIS FIND", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2095,5,-672) 
+end)
+
+-- Кнопка
+Section:NewButton("FURNITURE", "Teleport too FURNITURE", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-591,78,276) 
+end)
+
+-- Кнопка
+Section:NewButton("ROSEWELL MINES", "Teleport too ROSEWELL MINES", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5541,14,-1686) 
+end)
+
+-- Кнопка
+Section:NewButton("VI'S LOGICS", "Teleport too VI'S LOGICS", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5129,61,-2815) 
+end)
+
+-- Кнопка
+Section:NewButton("Claudnite", "Teleport too Claudnite", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7207,757,-2968) 
+end)
+
+-- Кнопка
+Section:NewButton("CRAIG'S DEALERSHIP", "Teleport too Claudnite", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6843,6,-4243) 
+end)
+
+-- Кнопка
+Section:NewButton("Enchants", "Teleport too Claudnite", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3031,-587,-1548) 
+end)
+
+-- Секция
+local Tab = Window:NewTab("Settings")
 -- Секция
 local Tab = Window:NewTab("Settings")
