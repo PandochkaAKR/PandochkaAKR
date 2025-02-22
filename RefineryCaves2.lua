@@ -1,7 +1,4 @@
-local player = game.Players.LocalPlayer
-local char = player.Character or player.CharacterAdded:Wait()
-local humanoidRootPart = char:WaitForChild("HumanoidRootPart")
-local humanoid = char:WaitForChild("Humanoid")
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
 
 -- Создать окно UI
 local Window = Library.CreateLib("Refinery Caves 2 By PandochkaAKR","RJTheme3")
@@ -78,23 +75,76 @@ Section:NewDropdown("DropdownText", "DropdownInf", {"Option 1", "Option 2", "Opt
     print(currentOption)
 end)
 
--- Секция
-local Tab = Window:NewTab("Vehicle")
+local Tab = Window:NewTab("Terrain")
 
--- Подсекция
-local Section = Tab:NewSection("Teleport on Vehicle")
+local Section = Tab:NewSection("Terrain")
 
--- Кнопки телепортации
-Section:NewButton("Caves", "ButtonInfo", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(871,20,1789) 
+Section:NewButton("Your Plot", "Teleport too Your Plot", function()
+    if game.Workspace.Plots.Plot1.Owner.Value == game.Players.LocalPlayer then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot1.Plot.CFrame
+        print(1)
+    end
+    if game.Workspace.Plots.Plot2.Owner.Value == game.Players.LocalPlayer then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot2.Plot.CFrame
+        print(2)
+    end
+    if game.Workspace.Plots.Plot3.Owner.Value == game.Players.LocalPlayer then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot3.Plot.CFrame
+        print(3)
+    end
+    if game.Workspace.Plots.Plot4.Owner.Value == game.Players.LocalPlayer then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot4.Plot.CFrame
+        print(4)
+    end
+    if game.Workspace.Plots.Plot5.Owner.Value == game.Players.LocalPlayer then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot5.Plot.CFrame
+        print(5)
+    end
+    if game.Workspace.Plots.Plot6.Owner.Value == game.Players.LocalPlayer then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot6.Plot.CFrame
+        print(6)
+    end
+    if game.Workspace.Plots.Plot7.Owner.Value == game.Players.LocalPlayer then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot7.Plot.CFrame
+        print(7)
+    end
+    if game.Workspace.Plots.Plot8.Owner.Value == game.Players.LocalPlayer then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot8.Plot.CFrame
+        print(8)
+    end
 end)
 
-Section:NewButton("terain 1", "ButtonInfo", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1611,35,717) 
+local Section = Tab:NewSection("Plots")
+Section:NewButton("Plot1", "Teleport too Plot1", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot1.Plot.CFrame
 end)
 
-Section:NewButton("Caves Shards", "ButtonInfo", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6623,-571,854)
+Section:NewButton("Plot2", "Teleport too Plot2", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot2.Plot.CFrame
+end)
+
+Section:NewButton("Plot3", "Teleport too Plot3", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot3.Plot.CFrame
+end)
+
+Section:NewButton("Plot4", "Teleport too Plot4", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot4.Plot.CFrame
+end)
+
+Section:NewButton("Plot5", "Teleport too Plot5", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot5.Plot.CFrame
+end)
+
+Section:NewButton("Plot6", "Teleport too Plot6", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot6.Plot.CFrame
+end)
+
+Section:NewButton("Plot7", "Teleport too Plot7", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot7.Plot.CFrame
+end)
+
+Section:NewButton("Plot8", "Teleport too Plot8", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot8.Plot.CFrame
 end)
 
 -- Секция
@@ -116,11 +166,18 @@ Section:NewButton("UCShop", "Teleport too UCShop", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1906,5,-214) 
 end)
 
--- Секция
-local Tab = Window:NewTab("Boat")
+-- Кнопки телепортации
+Section:NewButton("Caves", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(871,20,1789) 
+end)
 
--- Подсекция
-local Section = Tab:NewSection("Teleport on Boat")
+Section:NewButton("terain 1", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1611,35,717) 
+end)
+
+Section:NewButton("Caves Shards", "ButtonInfo", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6623,-571,854)
+end)
 
 -- Кнопки телепортации
 Section:NewButton("EMERALD", "Teleport too Emeralde", function()
