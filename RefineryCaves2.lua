@@ -79,38 +79,15 @@ local Tab = Window:NewTab("Terrain")
 
 local Section = Tab:NewSection("Terrain")
 
-Section:NewButton("Your Plot", "Teleport too Your Plot", function()
-    if game.Workspace.Plots.Plot1.Owner.Value == game.Players.LocalPlayer then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot1.Plot.CFrame
-        print(1)
-    end
-    if game.Workspace.Plots.Plot2.Owner.Value == game.Players.LocalPlayer then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot2.Plot.CFrame
-        print(2)
-    end
-    if game.Workspace.Plots.Plot3.Owner.Value == game.Players.LocalPlayer then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot3.Plot.CFrame
-        print(3)
-    end
-    if game.Workspace.Plots.Plot4.Owner.Value == game.Players.LocalPlayer then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot4.Plot.CFrame
-        print(4)
-    end
-    if game.Workspace.Plots.Plot5.Owner.Value == game.Players.LocalPlayer then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot5.Plot.CFrame
-        print(5)
-    end
-    if game.Workspace.Plots.Plot6.Owner.Value == game.Players.LocalPlayer then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot6.Plot.CFrame
-        print(6)
-    end
-    if game.Workspace.Plots.Plot7.Owner.Value == game.Players.LocalPlayer then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot7.Plot.CFrame
-        print(7)
-    end
-    if game.Workspace.Plots.Plot8.Owner.Value == game.Players.LocalPlayer then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot8.Plot.CFrame
-        print(8)
+Section:NewButton("Your Plot", "Teleport to Your Plot", function()
+    for i = 1, 8 do
+        local plot = game.Workspace.Plots["Plot" .. i]
+        if plot.Owner.Value == game.Players.LocalPlayer then
+            local targetCFrame = plot.Plot.CFrame + Vector3.new(0, 20, 0)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetCFrame
+            print(i)
+            break
+        end
     end
 end)
 
@@ -171,7 +148,7 @@ Section:NewButton("EMERALD", "Teleport too Emeralde", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7745,20,-3337) 
 end)
 
-Section:NewButton("причал", "Teleport too Emeralde", function()
+Section:NewButton("причал", "Teleport too причал", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2152,10,-883) 
 end)
 
@@ -181,11 +158,6 @@ end)
 
 Section:NewButton("ENCHANTED", "Teleport too ENCHANTED", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3167,-580,-1626) 
-end)
-
--- Кнопка
-Section:NewButton("shop", "Teleport too Emeralde", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2242,-485,18) 
 end)
 
 -- Кнопка
@@ -233,7 +205,5 @@ Section:NewButton("Enchants", "Teleport too Claudnite", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3031,-587,-1548) 
 end)
 
--- Секция
-local Tab = Window:NewTab("Settings")
 -- Секция
 local Tab = Window:NewTab("Settings")
