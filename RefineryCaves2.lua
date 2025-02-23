@@ -83,7 +83,7 @@ Section:NewButton("Your Plot", "Teleport to Your Plot", function()
     for i = 1, 8 do
         local plot = game.Workspace.Plots["Plot" .. i]
         if plot.Owner.Value == game.Players.LocalPlayer then
-            local targetCFrame = plot.Plot.CFrame + Vector3.new(0, 20, 0)
+            local targetCFrame = plot.Plot.CFrame + Vector3.new(0, 50, 0)
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = targetCFrame
             print(i)
             break
