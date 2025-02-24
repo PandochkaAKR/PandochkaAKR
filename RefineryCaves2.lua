@@ -206,6 +206,9 @@ Section:NewButton("Enchants", "Teleport too Claudnite", function()
 end)
 
 local Tab = Window:NewTab("Others")
+
+local Section = Tab:NewSection("Utilite")
+
 Section:NewButton("Menu tp to sell", "Teleport too Sell", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/PandochkaAKR/PandochkaAKR/refs/heads/main/TeleportItem"))()
 end)
