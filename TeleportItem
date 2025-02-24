@@ -1,0 +1,212 @@
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Координаты продажи
+local sellPosition = CFrame.new(1441, 20, 168)
+
+-- Глобальная таблица для сохранения предыдущих позиций телепортированных объектов
+local teleportHistory = {}
+local selectedItems = {} -- Таблица для хранения выбранных предметов
+
+-- Папка с предметами
+local grabFolder = game.Workspace:FindFirstChild("Grab")
+if not grabFolder then
+    warn("Папка 'Grab' не найдена в Workspace!")
+end
+
+-- Создаем GUI
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = playerGui
+
+-- Размер увеличен для размещения дополнительных кнопок
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 200, 0, 310)
+frame.Position = UDim2.new(0.5, -100, 0.5, -130)
+frame.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+frame.BorderSizePixel = 2
+frame.Draggable = true -- Перетаскивание
+frame.Active = true
+frame.Parent = screenGui
+
+-- Заголовок
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 30)
+title.BackgroundColor3 = Color3.new(0.1, 0.1, 0.1)
+title.Text = "Tp to Sell Menu"
+title.TextColor3 = Color3.new(1, 1, 1)
+title.Parent = frame
+
+-- Кнопка включения/выключения телепортации
+local toggleButton = Instance.new("TextButton")
+toggleButton.Size = UDim2.new(0.8, 0, 0, 40)
+toggleButton.Position = UDim2.new(0.1, 0, 0.135, 0)  -- Y ~35px (30+5)
+toggleButton.BackgroundColor3 = Color3.new(0, 0.6, 0)
+toggleButton.Text = "Включить телепорт"
+toggleButton.TextColor3 = Color3.new(1, 1, 1)
+toggleButton.Parent = frame
+
+-- Кнопка "Продать все"
+local sellAllButton = Instance.new("TextButton")
+sellAllButton.Size = UDim2.new(0.8, 0, 0, 40)
+sellAllButton.Position = UDim2.new(0.1, 0, 0.30, 0)  -- ~80px
+sellAllButton.BackgroundColor3 = Color3.new(0, 0.4, 0.8)
+sellAllButton.Text = "Продать все"
+sellAllButton.TextColor3 = Color3.new(1, 1, 1)
+sellAllButton.Parent = frame
+
+-- Кнопка "Отменить"
+local cancelButton = Instance.new("TextButton")
+cancelButton.Size = UDim2.new(0.8, 0, 0, 40)
+cancelButton.Position = UDim2.new(0.1, 0, 0.465, 0)  -- ~125px
+cancelButton.BackgroundColor3 = Color3.new(0.5, 0.5, 0)
+cancelButton.Text = "Отменить"
+cancelButton.TextColor3 = Color3.new(1, 1, 1)
+cancelButton.Parent = frame
+
+-- Кнопка "Назад"
+local backButton = Instance.new("TextButton")
+backButton.Size = UDim2.new(0.8, 0, 0, 40)
+backButton.Position = UDim2.new(0.1, 0, 0.63, 0)  -- ~165px
+backButton.BackgroundColor3 = Color3.new(0.4, 0.4, 0.8)
+backButton.Text = "Назад"
+backButton.TextColor3 = Color3.new(1, 1, 1)
+backButton.Parent = frame
+
+-- Кнопка закрытия
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0.8, 0, 0, 40)
+closeButton.Position = UDim2.new(0.1, 0, 0.790, 0)  -- ~260px
+closeButton.BackgroundColor3 = Color3.new(0.8, 0, 0)
+closeButton.Text = "Закрыть"
+closeButton.TextColor3 = Color3.new(1, 1, 1)
+closeButton.Parent = frame
+
+-- Переменная состояния телепортации
+local teleportEnabled = false
+
+-- Функция телепортации предмета при клике
+local function onClick(part)
+    if teleportEnabled then
+        -- Сохраняем исходное положение, если еще не сохранено
+        if not teleportHistory[part] then
+            teleportHistory[part] = part.CFrame
+        end
+        part.CFrame = sellPosition -- Телепортируем в точку продажи
+    end
+end
+
+-- Функция добавления ClickDetector к предмету
+local function setupClickDetector(part)
+    if part:IsA("BasePart") and not part:FindFirstChild("ClickDetector") then
+        local clickDetector = Instance.new("ClickDetector")
+        clickDetector.Parent = part
+        clickDetector.MouseClick:Connect(function()
+            onClick(part)
+            -- Добавляем или удаляем элемент из выбранных
+            if selectedItems[part] then
+                selectedItems[part] = nil
+            else
+                selectedItems[part] = true
+            end
+        end)
+    end
+end
+
+-- Функция удаления всех ClickDetector в папке Grab
+local function removeClickDetectors()
+    if grabFolder then
+        for _, obj in pairs(grabFolder:GetDescendants()) do
+            if obj:IsA("BasePart") then
+                local cd = obj:FindFirstChild("ClickDetector")
+                if cd then
+                    cd:Destroy()
+                end
+            end
+        end
+    end
+end
+
+-- Функция поиска предметов в Grab и добавления ClickDetector
+local function findObjects()
+    removeClickDetectors() -- Удаляем старые ClickDetector
+    if grabFolder then
+        for _, obj in pairs(grabFolder:GetDescendants()) do
+            if obj:IsA("BasePart") then
+                setupClickDetector(obj)
+            end
+        end
+    end
+end
+
+-- Обработчик кнопки включения/выключения телепортации
+toggleButton.MouseButton1Click:Connect(function()
+    teleportEnabled = not teleportEnabled
+    if teleportEnabled then
+        toggleButton.Text = "Выключить телепорт"
+        toggleButton.BackgroundColor3 = Color3.new(0.6, 0, 0)
+        findObjects() -- Создаем ClickDetector в Grab
+    else
+        toggleButton.Text = "Включить телепорт"
+        toggleButton.BackgroundColor3 = Color3.new(0, 0.6, 0)
+        removeClickDetectors() -- Удаляем ClickDetector
+        selectedItems = {} -- Очищаем выбранные предметы
+    end
+end)
+
+-- Обработчик кнопки "Продать все"
+local function sellAll()
+    if grabFolder then
+        for _, obj in pairs(grabFolder:GetDescendants()) do
+            if obj:IsA("BasePart") then
+                local owner = obj:FindFirstChild("Owner")
+                if owner and owner.Value == player.Name then -- Проверяем имя локального игрока
+                    if not teleportHistory[obj] then
+                        teleportHistory[obj] = obj.CFrame
+                    end
+                    obj.CFrame = sellPosition -- Телепортируем предмет на позицию продажи
+                end
+            end
+        end
+    end
+end
+
+sellAllButton.MouseButton1Click:Connect(sellAll)
+
+-- Обработчик кнопки "Отменить": удаляем ClickDetector у предметов игрока
+local function cancelTeleportForPlayerItems()
+    if grabFolder then
+        for _, obj in pairs(grabFolder:GetDescendants()) do
+            if obj:IsA("BasePart") then
+                local owner = obj:FindFirstChild("Owner")
+                if owner and owner.Value == player.Name then
+                    local cd = obj:FindFirstChild("ClickDetector")
+                    if cd then
+                        cd:Destroy()
+                    end
+                end
+            end
+        end
+    end
+end
+
+cancelButton.MouseButton1Click:Connect(cancelTeleportForPlayerItems)
+
+-- Обработчик кнопки "Назад": возвращаем объекты в сохранённое положение
+local function undoLastTeleport()
+    for part, originalCFrame in pairs(teleportHistory) do
+        if part and part:IsA("BasePart") then
+            part.CFrame = originalCFrame -- Возвращаем в исходное положение
+            teleportHistory[part] = nil -- Удаляем из истории
+        end
+    end
+end
+
+backButton.MouseButton1Click:Connect(undoLastTeleport)
+
+-- Обработчик кнопки закрытия
+closeButton.MouseButton1Click:Connect(function()
+    screenGui:Destroy()
+end)
+
+-- Инициализация
+findObjects() -- Найти предметы в папке Grab
