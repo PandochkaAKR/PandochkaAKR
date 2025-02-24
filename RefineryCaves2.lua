@@ -92,6 +92,7 @@ Section:NewButton("Your Plot", "Teleport to Your Plot", function()
 end)
 
 local Section = Tab:NewSection("Plots")
+
 Section:NewButton("Plot1", "Teleport too Plot1", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Plots.Plot1.Plot.CFrame
 end)
@@ -205,9 +206,9 @@ Section:NewButton("Enchants", "Teleport too Claudnite", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3031,-587,-1548) 
 end)
 
-local Tab = Window:NewTab("Others")
+local Tab = Window:NewTab("Misc")
 
-local Section = Tab:NewSection("Utilite")
+local Section = Tab:NewSection("Other")
 
 Section:NewButton("Menu tp to sell", "Teleport too Sell", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/PandochkaAKR/PandochkaAKR/refs/heads/main/TeleportItem"))()
