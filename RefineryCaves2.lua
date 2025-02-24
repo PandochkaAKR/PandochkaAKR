@@ -205,5 +205,10 @@ Section:NewButton("Enchants", "Teleport too Claudnite", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3031,-587,-1548) 
 end)
 
+local Tab = Window:NewTab("Others")
+Section:NewButton("Menu tp to sell", "Teleport too Sell", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/PandochkaAKR/PandochkaAKR/refs/heads/main/TeleportItem"))()
+end)
+
 -- Секция
 local Tab = Window:NewTab("Settings")
