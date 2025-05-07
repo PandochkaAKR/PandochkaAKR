@@ -132,12 +132,16 @@ local Tab = Window:NewTab("Teleports")
 local Section = Tab:NewSection("Teleports")
 
 -- Кнопки телепортации
-Section:NewButton("shop", "Teleport too Emeralde", function()
+Section:NewButton("Emerald", "Teleport too Emeralde", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2242,-485,18) 
 end)
 
-Section:NewButton("UCShop", "Teleport too UCShop", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1906,5,-214) 
+Section:NewButton("Land Agency", "Teleport too Land Agency", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1361, 32, -748) 
+end)
+
+Section:NewButton("UCStore", "Teleport too UCStore", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1215, 31, -682) 
 end)
 
 Section:NewButton("Caves Shards", "ButtonInfo", function()
@@ -150,11 +154,15 @@ Section:NewButton("EMERALD", "Teleport too Emeralde", function()
 end)
 
 Section:NewButton("причал", "Teleport too причал", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2152,10,-883) 
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1737, 5, -1516) 
 end)
 
-Section:NewButton("SEllARY", "Teleport too Emeralde", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1441,5,168) 
+Section:NewButton("ТОРГ РЫБЫ", "Teleport too ТОРГ РЫБЫ", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1638, 7, -1277) 
+end)
+
+Section:NewButton("SEllARY", "Teleport too Sell Zone", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1215, 31, -682) 
 end)
 
 Section:NewButton("ENCHANTED", "Teleport too ENCHANTED", function()
@@ -163,7 +171,7 @@ end)
 
 -- Кнопка
 Section:NewButton("Caves", "Teleport too Caves", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(871,5,1789) 
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1922, 7, -51) 
 end)
 
 -- Кнопка
@@ -173,12 +181,12 @@ end)
 
 -- Кнопка
 Section:NewButton("NAUCIS FIND", "Teleport too NAUCIS FIND", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2095,5,-672) 
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1818, 7, -1373) 
 end)
 
 -- Кнопка
-Section:NewButton("FURNITURE", "Teleport too FURNITURE", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-591,78,276) 
+Section:NewButton("Coal's FURNITURE", "Teleport too Coal's FURNITURE", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1191, 110, 534) 
 end)
 
 -- Кнопка
